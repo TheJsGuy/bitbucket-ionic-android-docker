@@ -36,9 +36,10 @@ jobs:
       
       - name: Increase Version
         run: |
-          export VAR=$(cat .version)
-          export VAR=$((${VAR##*.} + 1))
-          echo $VAR > .version
+          export TAG_VERSION=$(cat .version)
+          export TAG_VERSION=$((${VAR##*.} + 1))
+          echo $TAG_VERSION > .version
+          export $TAG_VERSION
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
@@ -79,7 +80,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{cat .version}}
+          tags: ${{ env.TAG_VERSION }}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Increase version on github
