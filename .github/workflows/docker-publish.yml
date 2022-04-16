@@ -63,7 +63,7 @@ jobs:
           export TAG_VERSION=$(cat .version)
           export TAG_VERSION=$((${VAR##*.} + 1))
           echo $TAG_VERSION > .version
-          echo "::set-output name=TAG_VERSION::${{ stsecrets.DOCKER_HUB_USERNAME }}/bitbucket-ionic-android:$TAG_VERSION"
+          echo "::set-output name=TAG_VERSION::${{ secrets.DOCKER_HUB_USERNAME }}/bitbucket-ionic-android:$TAG_VERSION"
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
