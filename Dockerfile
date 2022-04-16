@@ -12,7 +12,7 @@ RUN set -x \
 && cd $ANDROID_HOME \
 && sudo wget https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip \
 && sudo unzip -q commandlinetools-linux-8092744_latest.zip \
-&& sudi rm commandlinetools-linux-8092744_latest.zip \
+&& sudo rm commandlinetools-linux-8092744_latest.zip \
 && export ANDROID_HOME="$PWD/cmdline-tools" \
 && export PATH="$PWD/cmdline-tools/bin/:$PATH" \
 && yes | sdkmanager --licenses --sdk_root=$ANDROID_HOME \
