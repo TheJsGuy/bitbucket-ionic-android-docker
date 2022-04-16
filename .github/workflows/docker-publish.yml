@@ -40,7 +40,7 @@ jobs:
           export TAG_VERSION=$(cat .version)
           export TAG_VERSION=$((${VAR##*.} + 1))
           echo $TAG_VERSION > .version
-          echo "::set-output name=TAG_VERSION::$TAG_VERSION""
+          echo "::set-output name=TAG_VERSION::$TAG_VERSION"
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
