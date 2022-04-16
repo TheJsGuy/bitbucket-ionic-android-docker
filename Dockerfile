@@ -12,6 +12,7 @@ RUN set -x \
 && cd $ANDROID_HOME \
 && sudo wget https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip \
 && sudo unzip -q commandlinetools-linux-8092744_latest.zip \
+&& sudi rm commandlinetools-linux-8092744_latest.zip \
 && export ANDROID_HOME="$PWD/cmdline-tools" \
 && export PATH="$PWD/cmdline-tools/bin/:$PATH" \
 && yes | sdkmanager --licenses --sdk_root=$ANDROID_HOME \
@@ -20,8 +21,8 @@ RUN set -x \
 && sdkmanager --list --sdk_root=$ANDROID_HOME \
 && . /etc/profile \
 && apt remove wget unzip  -y \
-&& apt install gradle -y \
 && apt autoremove -y  \
 && npm install @ionic/cli cordova
 
 ENV ANDROID_HOME /opt/android-sdk-linux/cmdline-tools
+ENV ANDROID_SDK_ROOT /opt/android-sdk-linux/cmdline-tools
